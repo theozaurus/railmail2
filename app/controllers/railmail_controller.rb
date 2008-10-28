@@ -65,5 +65,4 @@ class RailmailController < ApplicationController
   end
 end
 
-
-RailmailController.template_root = File.join(File.dirname(__FILE__), '..', 'views')
+RailmailController.append_view_path(File.join( File.dirname(__FILE__),'..','views'))
