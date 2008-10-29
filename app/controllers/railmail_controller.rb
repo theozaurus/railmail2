@@ -7,16 +7,13 @@ class RailmailController < ApplicationController
     end
   end
   
-  def index
-    @delivery_pages = Paginator.new self, RailmailDelivery.count, 30, @params['page']
+  def index    
+    @deliveries = RailmailDelivery.paginate :page => params[:page], :order => 'sent_at DESC', :per_page => 1
     
-    @deliveries = RailmailDelivery.find :all, :order => 'sent_at DESC',                           
-                                              :limit  =>  @delivery_pages.items_per_page,
-                                              :offset =>  @delivery_pages.current.offset
-    @delivery_window = @delivery_pages.current.window 4
-    logger.debug  @delivery_window.pages.length
-    @delivery_window = @delivery_pages.current.window(4 + (9 - @delivery_window.pages.length)) if @delivery_window.pages.length < 9
-    fill_date_ranges
+    #@delivery_window = @delivery_pages.current.window 4
+    #logger.debug  @delivery_window.pages.length
+    #@delivery_window = @delivery_pages.current.window(4 + (9 - @delivery_window.pages.length)) if @delivery_window.pages.length < 9
+    #fill_date_ranges
   end
   
   def read

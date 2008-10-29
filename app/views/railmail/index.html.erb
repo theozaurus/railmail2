@@ -22,30 +22,9 @@
 </ul>
 <div id="pager_box">
 	<ul id="pager">
-	<% unless @delivery_window.first.first? %>
-		<% target_page = @delivery_window.first.number - 6%>
-		<li><%= link_to '&laquo;', :page => (@delivery_pages.has_page_number?(target_page) ? @delivery_pages[target_page] : @delivery_pages.first)%></li>
-	<% end %>
-	<% @delivery_window.pages.each do |page|%>
-		<% if page == @delivery_pages.current %>
-			<li class="current"><%=page.number%></li>
-		<% else %>
-			<li><%=link_to page.number, :page => page, :anchor => page.number %></li>
-		<% end %>
-	<% end %>
-	<% unless @delivery_window.last.last? %>
-		<% target_page = @delivery_window.last.number + 6%>
-		<li><%= link_to '&raquo;', :page => (@delivery_pages.has_page_number?(target_page) ? @delivery_pages[target_page] : @delivery_pages.last)%></li>
-	<% end %>
-	</ul><br class="clear" />
-	<ul id="date_ranges">
-		<% unless @deliveries.empty? %>
-		<% @delivery_window.pages.each do |page| 
-			start_date, end_date = @date_ranges[page.number]
-			%>
-			<li class="<%= (page == @delivery_pages.current) ? "current" : "initially_hidden"%>" id="range_<%=page.number%>"><%= start_date.strftime('%x %X')%> to <%= end_date.strftime('%x %X')%></li>
-		<% end %>
-		<% end %>
+	  <% @deliveries.page_count.times {|i| page = i+1 %>
+	    <%= "<li#{" class='current'" if page == @deliveries.current_page}>" + (link_to page, {:page => page }) + "</li>"%>
+	  <% } %>
 	</ul>
 </div>
 <br class="clear" />

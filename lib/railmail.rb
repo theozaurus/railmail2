@@ -1,3 +1,4 @@
+require 'will_paginate' 
 require 'railmail/action_mailer'
 
 ActionMailer::Base.class_eval do
