@@ -20,6 +20,7 @@
 	<li><a href="#" id="collapse_all">collapse all</a></li>
 	<li><a href="#" id="expand_new">expand new</a></li>
 </ul>
+<% if @deliveries.page_count > 1 %>
 <div id="pager_box">
 	<ul id="pager">
 	  <% @deliveries.page_count.times {|i| page = i+1 %>
@@ -27,6 +28,7 @@
 	  <% } %>
 	</ul>
 </div>
+<% end %>
 <br class="clear" />
 <table id="deliveries">
 	<thead>
