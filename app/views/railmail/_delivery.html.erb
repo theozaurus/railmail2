@@ -26,9 +26,9 @@
 				<%=delivery_body delivery%>
 				</div>
 					
-				<%=form_remote_tag(:url => {:action => 'read'}, :html =>{:class => 'reader'})%>
+				<% form_remote_tag(:url => {:action => 'read'}, :html =>{:class => 'reader'}) do %>
 				<%=hidden_field_tag 'id', delivery.id, :id => nil%>
-				<%=end_form_tag%></div>
+				<% end %></div>
 			</div>
 		</td>
 	</tr>

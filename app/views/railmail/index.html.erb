@@ -1,6 +1,6 @@
 <div id="resend" class="initially_hidden">
 	<div class="translucent_bg"></div>
-	<%= form_remote_tag :url => {:action => 'resend' }, :html => {:id => 'resend_form'}%>
+	<% form_remote_tag :url => {:action => 'resend' }, :html => {:id => 'resend_form'} do %>
 		<h2>Resend This Message?</h2>
 		<input type="hidden" name="id" id="resend_delivery" value="" />
 		<p>
@@ -13,7 +13,7 @@
 			<input type="submit" id="cancel_resend" value="cancel" />
 			<input type="submit" id="do_resend" value="resend" />
 		</fieldset>
-	<%= end_form_tag%>
+	<% end %>
 </div>
 
 <ul id="menu">
