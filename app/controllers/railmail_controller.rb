@@ -8,7 +8,7 @@ class RailmailController < ApplicationController
   end
   
   def index    
-    @deliveries = RailmailDelivery.paginate :page => params[:page], :order => 'sent_at DESC', :per_page => 1
+    @deliveries = RailmailDelivery.paginate :page => params[:page], :order => 'sent_at DESC', :per_page => 30
     
     #@delivery_window = @delivery_pages.current.window 4
     #logger.debug  @delivery_window.pages.length
