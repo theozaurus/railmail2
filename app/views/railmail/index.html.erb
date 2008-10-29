@@ -138,22 +138,6 @@
 		}
 	};
 	
-	var date_ranger_on = function(page) {
-		return function() {
-			active_range = $('range_' + page);
-			default_range.hide();
-			active_range.show();
-		}
-	}
-	
-	var date_ranger_off = function() {
-			default_range.show();
-			if(active_range) {
-				active_range.hide();
-				active_range = null;
-			}
-	}
-	
 	var wire_resender = function(el) {
 		el.onclick = resender(el);
 	};
@@ -174,22 +158,6 @@
 		});
 		
 		$$('.resend_link').each(wire_resender);
-		
-		$$('#date_ranges li').each(function(el) {
-			if(!el.hasClassName('current')) {
-				el.hide();
-			} else {
-				default_range = el;
-			}
-		});
-		
-		$$('#pager a').each(function(el) {
-			var anc = anchor(el.href);
-			if(anc) {
-				el.onmouseover = date_ranger_on(anc);
-				el.onmouseout = date_ranger_off;
-			}
-		});
 		
 		$$('.initially_hidden').each(function(el){ el.removeClassName('initially_hidden'); el.hide(); });
 	});
