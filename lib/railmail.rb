@@ -12,9 +12,9 @@ module Railmail
     $LOAD_PATH << File.join(directory, 'app', 'models')
     $LOAD_PATH << File.join(directory, 'app', 'helpers')
     
-    Dependencies.load_paths << File.join(directory, 'app', 'controllers')
-    Dependencies.load_paths << File.join(directory, 'app', 'models')
-    Dependencies.load_paths << File.join(directory, 'app', 'helpers')
+    ActiveSupport::Dependencies.load_paths << File.join(directory, 'app', 'controllers')
+    ActiveSupport::Dependencies.load_paths << File.join(directory, 'app', 'models')
+    ActiveSupport::Dependencies.load_paths << File.join(directory, 'app', 'helpers')
   end
 end
 
